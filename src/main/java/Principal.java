@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -12,11 +14,19 @@ public class Principal {
 	public static void main(String[] args) {
 
 		//Creación de los objetos
-		Desarrollador des1 = new Desarrollador(1, "Naughty Dog", 1984);
-		Desarrollador des2 = new Desarrollador(2, "Capcom", 1979);
+		Videojuego vid1 = new Videojuego(10, "Uncharted", "Accion");
+		Videojuego vid2 = new Videojuego(20, "Street Fighter II", "Lucha");
+//		Videojuego vid3 = new Videojuego(30, "Pac-Man", "Arcade");
 		
-		Videojuego vid1 = new Videojuego(10, "Uncharted", "Accion", des1);
-		Videojuego vid2 = new Videojuego(20, "Street Fighter II", "Lucha", des1);
+		ArrayList<Videojuego> listaVideojuego1 = new ArrayList<Videojuego>();
+//		ArrayList<Videojuego> listVideojuego2 = new ArrayList<Videojuego>();
+		listaVideojuego1.add(vid1);
+		listaVideojuego1.add(vid2);
+//		listVideojuego2.add(vid3);
+		
+		Desarrollador des1 = new Desarrollador(1, "Naughty Dog", 1984, listaVideojuego1);
+		Desarrollador des2 = new Desarrollador(2, "Capcom", 1979, listaVideojuego1);
+		
 
 		//Creación del SessionFactory
 		StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure().build();
@@ -28,10 +38,12 @@ public class Principal {
 		//Comenzamos la transacción
 		sesion.beginTransaction();
 		
-			sesion.save(des1);
-			sesion.save(des2);
 			sesion.save(vid1);
 			sesion.save(vid2);
+//			sesion.save(vid3);
+			
+			sesion.save(des1);
+			sesion.save(des2);
 		
 		
 		sesion.getTransaction().commit();
