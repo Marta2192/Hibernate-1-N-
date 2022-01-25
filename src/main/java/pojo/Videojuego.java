@@ -17,14 +17,18 @@ public class Videojuego {
 	String titulo;
 	@Column
 	String genero;
-
-	public Videojuego(int codigo, String titulo, String genero) {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CodDes")	
+	private Desarrollador desarrollador;
+	
+	
+	public Videojuego(int codigo, String titulo, String genero, Desarrollador desarrollador) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.genero = genero;
+		this.desarrollador = desarrollador;
 	}
-	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -43,7 +47,14 @@ public class Videojuego {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+	public Desarrollador getDesarrollador() {
+		return desarrollador;
+	}
+	public void setDesarrollador(Desarrollador desarrollador) {
+		this.desarrollador = desarrollador;
+	}
 	
+
 	
 	
 	

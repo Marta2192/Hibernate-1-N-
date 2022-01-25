@@ -20,8 +20,7 @@ public class Desarrollador {
 	private String nombre;
 	@Column
 	private int anho;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodDes", foreignKey = @ForeignKey(foreignKeyDefinition = "fkVidToDes"))	
+	@OneToMany(mappedBy = "desarrollador",cascade = CascadeType.ALL)
 	private List<Videojuego> listaVideojuegos = new ArrayList<Videojuego>();
 	
 	

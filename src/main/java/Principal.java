@@ -14,18 +14,25 @@ public class Principal {
 	public static void main(String[] args) {
 
 		//Creación de los objetos
-		Videojuego vid1 = new Videojuego(10, "Uncharted", "Accion");
-		Videojuego vid2 = new Videojuego(20, "Street Fighter II", "Lucha");
-//		Videojuego vid3 = new Videojuego(30, "Pac-Man", "Arcade");
+		Videojuego vid1 = new Videojuego(10, "Uncharted", "Accion", null);
+		Videojuego vid2 = new Videojuego(20, "Crash Bandicoot", "Plataformas", null);
+		Videojuego vid3 = new Videojuego(30, "Street Fighter II", "Lucha", null);
 		
-		ArrayList<Videojuego> listaVideojuego1 = new ArrayList<Videojuego>();
-//		ArrayList<Videojuego> listVideojuego2 = new ArrayList<Videojuego>();
-		listaVideojuego1.add(vid1);
-		listaVideojuego1.add(vid2);
-//		listVideojuego2.add(vid3);
+		ArrayList<Videojuego> lista1 = new ArrayList<Videojuego>();
+
+		lista1.add(vid1);
+		lista1.add(vid2);
+
+		ArrayList<Videojuego> lista2 = new ArrayList<Videojuego>();
 		
-		Desarrollador des1 = new Desarrollador(1, "Naughty Dog", 1984, listaVideojuego1);
-		Desarrollador des2 = new Desarrollador(2, "Capcom", 1979, listaVideojuego1);
+		lista2.add(vid3);
+		
+		Desarrollador des1 = new Desarrollador(1, "Naughty Dog", 1984, lista1);
+		Desarrollador des2 = new Desarrollador(2, "Capcom", 1979, lista2);
+		
+		vid1.setDesarrollador(des1);
+		vid2.setDesarrollador(des1);
+		vid3.setDesarrollador(des2);
 		
 
 		//Creación del SessionFactory
@@ -40,7 +47,7 @@ public class Principal {
 		
 			sesion.save(vid1);
 			sesion.save(vid2);
-//			sesion.save(vid3);
+			sesion.save(vid3);
 			
 			sesion.save(des1);
 			sesion.save(des2);
